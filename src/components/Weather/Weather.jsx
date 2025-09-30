@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./weather.css";
 import search_icon from "../../assets/search.png";
 import humidity_icon from "../../assets/humidity.png";
 import wind_icon from "../../assets/wind.png";
 
-
 const Weather = () => {
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState('Tashkent');
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState('');
 
@@ -32,6 +31,11 @@ const Weather = () => {
       setError(err.message);
     }
   };
+
+
+  useEffect(() => {
+    fetchWeather();
+  }, []);
 
   return (
     <div className='weather'>
